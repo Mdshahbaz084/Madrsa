@@ -61,10 +61,10 @@ footer{
 header {
     text-align: center;
     text-transform: capitalize;
-    overflow: hidden;
+    /* overflow: hidden;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1000; */
 }
 
 header h1 {
@@ -105,6 +105,27 @@ header p {
     text-align: center;
 }
 
+.google-payment{
+    margin: 20px 0; 
+}
+
+.google-button{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #17a382;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    background-image: url(image/icons8-google-48.png);
+    background-repeat: no-repeat;
+    width: 200px;
+    text-align: right;
+}
+.google-button:hover {
+    background-color: #22b9a0;
+    
+}
 .phonepe-payment {
     margin: 20px 0;
 }
@@ -112,15 +133,20 @@ header p {
 .phonepe-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #4caf50;
+    background-color: #27a6d8;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     font-size: 1.2em;
+    background-image: url(image/icons8-phone-pe-48.png);
+    background-repeat: no-repeat;
+    align-items: flex-start;
+    width: 200px;
+    text-align: right;
 }
 
 .phonepe-button:hover {
-    background-color: #45a049;
+    background-color: #2083cf;
 }
 
 .bank-details {
