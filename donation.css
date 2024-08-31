@@ -1,0 +1,158 @@
+*{
+    margin: 0%;
+    text-align: center;
+
+}
+body {
+    font-family: Arial, Helvetica, sans-serif; 
+    background-color: #d0d0d0;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    padding: 35px;
+    margin: 0%;
+    text-align: center;
+    background-image: url(image/heading1.jpg);
+    font-family: fangsong;
+    font-weight: 900;
+    color: darkblue;
+}
+
+#button{
+   background-color:#77a8a8;
+   text-align: center;
+   padding: 10px;
+   margin: 0px;
+   text-decoration: none;
+   
+}
+
+button{
+    background-color: rgb(88, 168, 168);
+    border-radius: 20px;
+    height: 30px;
+    width: 100px;
+    border-style: groove;
+    border-color: yellow;
+    text-decoration: none; 
+} 
+
+/* header div complete ho gaya hai jiji */
+
+footer{
+    padding: 20px;
+    margin: 0;
+    text-align: center; 
+    background-color:#77a8a8;
+}
+
+   /* with aii procid  ///////////////////////////////////////////////////////////////*/
+.container {
+    /* max-width: 800px; */
+    margin: 0 auto;
+    padding: 20px;
+    background-color:#d0d0d0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+header {
+    text-align: center;
+    text-transform: capitalize;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 2em;
+    color: #2c3e50;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #7f8c8d;
+}
+
+.payment-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.qr-code {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.qr-code img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+    border: 1px solid #bdc3c7;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.qr-code p {
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.phonepe-payment {
+    margin: 20px 0;
+}
+
+.phonepe-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+.phonepe-button:hover {
+    background-color: #45a049;
+}
+
+.bank-details {
+    text-align: left;
+    width: 100%;
+}
+
+.bank-details h2 {
+    font-size: 1.5em;
+    border-bottom: 2px solid #2980b9;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.bank-details p {
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+
+.instructions {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.instructions h2 {
+    font-size: 1.5em;
+    border-bottom: 2px solid #2980b9;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.instructions p {
+    font-size: 1.1em;
+}
+/* end ai proced//////////////////////////////////////////// */
