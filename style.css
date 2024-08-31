@@ -15,8 +15,9 @@ h1{
 header{
     background-color: #87bdd8;
     text-align: center;
-    color: rgb(0, 4, 255);
+    color: darkblue;
     padding: 0px;
+    
 }
 .stiky {
     background-color: #77a8a8;
@@ -29,13 +30,13 @@ header{
 .stiky-2{
     list-style-type: none;
     margin: 0;
-    padding: 15px;
+    padding: 8px;
     display: flex;
     justify-content: center; 
 }
 .navitem{
     display: inline;
-    padding: 10px;
+    padding: 5px;
     text-decoration: none;
 }
 .navitem a{
@@ -44,6 +45,25 @@ header{
    
 }
 
+/* button ka code likha gaya hai aap dekh sakte */
+.hbutton{
+    background-color: rgb(88, 168, 168);
+    color: #00ff0d;
+    border-radius: 20px;
+    text-decoration: none;
+    border-color: yellow;
+    border-style: groove;
+    height: 30px;
+}
+.button{
+    background-color: #a2a8d3;
+    border-radius: 10px;
+    text-decoration: none;
+    border-color: #113f67;
+    border-style: groove;
+    border-style: dotted;
+
+}
 /* .Introduction .Midia .donation .Contact */
 h2{
     text-decoration: underline;
@@ -103,7 +123,7 @@ iframe{
 /* feedback from by user request */
 .page-container {
     font-family: Arial, sans-serif;
-    background-color: #d9ecd0;
+    background-color: #d0d0d0;
     margin: 0;
     padding: 0;
     display: flex;
@@ -112,7 +132,7 @@ iframe{
     
 } 
 .feedback-form {
-    background-color: #d9ecd0;
+    background-color: #d0d0d0;
     padding: 20px;
     border-radius: 5px;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
@@ -139,7 +159,7 @@ iframe{
     
 }
 .feedback-form button:hover {
-    background-color: #4cae4c;
+    background-color: #d0d0d0;
 }
 
 /* compleate from request css code */
