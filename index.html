@@ -13,7 +13,7 @@
         <ul class="stiky-2">
             <li class="navitem"><button class="hbutton"><a href="#home">Home</a></button></li>
             <li class="navitem"><button class="hbutton"><a href="#Introduction">Introduction</a></button></li>
-            <li class="navitem"><button class="hbutton"><a href="#Midia">Midia</a></button></li>
+            <li class="navitem"><button class="hbutton"><a href="#Media">Midia</a></button></li>
             <li class="navitem"><button class="hbutton"><a href="#Donation">Donation</a></button></li>
             <li class="navitem"><button class="hbutton"><a href="#Contact Us">Contact</a></button></li>
         </ul>
@@ -24,7 +24,20 @@
     </header>
 
     <main>
+<!-- new event add karna ho to ye update kare -->
+        <div class="marquee-container">
+            <div class="marquee">
+                <span class="new-label">NEW</span> <!-- "New" Label -->
+                <span class="marquee-text">No event.......!</span>
+            </div>
+        
+            <!-- <div class="marquee">
+                <span class="new-label">NEW</span>
+                <span class="marquee-text">Ye line bhi chalte rehti hai, naye updates ke saath... Line 2</span>
+            </div>  -->
+        </div>
 
+        <!-- new event add karna ho to ye update kare code khatam  -->
         
 
         <section id="Introduction" class="Introduction">
@@ -94,20 +107,66 @@
 
         <section id="Midia" class="Midia">
 
-             <h2>Midia</h2>
-      
-            <img src="image/bord.jpg" alt="bord">
-            <img src="image/flower.jpg" alt="flower">
-            <img src="image/full view.jpg" alt="full view">
-            <img src="image/inside front.jpg" alt="inside front">
-            <img src="image/inside intro.jpg" alt="inside intro">
-            <img src="image/madrsa outside.jpg" alt="madrsa outside">
-            <img src="image/rasid.jpg" alt="rasid">
-            <img src="image/inside view.jpg" alt="inside view">
-            <img src="image/inside2.jpg" alt="inside2">
-            <img src="image/inside4.jpg" alt="inside4">
-            <img src="image/study table.jpg" alt="study table"> 
-            <img src="image/bathroom .jpg" alt="bathroom">
+             <h2>Media</h2>
+
+            <div class="media-section">
+                <!-- <div class="media-title">Our Media Gallery</div> -->
+            
+                <div class="media-container">
+                    <div class="media-item">
+                        <img src="image/inside intro.jpg" alt="Iside one">
+                    </div>
+                    <div class="media-item">
+                        <img src="image/inside front.jpg" alt="Iside 2">
+                    </div>
+                    <div class="media-item">
+                        <img src="image/inside4.jpg" alt="Inside 3">
+                    </div>
+                    <div class="media-item">
+                        <img src="image/inside2.jpg" alt="Inside 4">
+                    </div>
+                    <!-- Add more media items as needed -->
+                </div>
+            </div>
+            
+            <div class="slider-container">
+                <img src="image/bord.jpg" class="slider-image active" alt="Media 1">
+                <img src="image/rasid.jpg" class="slider-image" alt="Media 2">
+                <img src="image/study table.jpg" class="slider-image" alt="Media 3">
+                <img src="image/madrsa outside.jpg" class="slider-image" alt="Media 4">
+                
+                <button class="slider-button prev" onclick="prevImage()">&#9664;</button>
+                <button class="slider-button next" onclick="nextImage()">&#9654;</button>
+            </div>
+            
+            <div class="media-buttons">
+                <a href="#more-media" class="media-button">More Media</a>
+                <a href="#events" class="media-button">View Events</a>
+            </div>
+            
+            <script>
+                let currentImageIndex = 0;
+                const images = document.querySelectorAll('.slider-image');
+            
+                function showImage(index) {
+                    images.forEach((img, i) => {
+                        img.classList.toggle('active', i === index);
+                    });
+                }
+            
+                function nextImage() {
+                    currentImageIndex = (currentImageIndex + 1) % images.length;
+                    showImage(currentImageIndex);
+                }
+            
+                function prevImage() {
+                    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                    showImage(currentImageIndex);
+                }
+            </script>
+
+
+
         
         </section>
 
@@ -194,9 +253,9 @@
 
             <p>Aap apne bache ka admission karwane ke liye niche diye gaye details par hum se rabta kar sakte hain:</p>
 
-            <p>Name:<b>Md Irfan</b> <br> Contact Number: 9470463078</p>
+            <p>Name:<b>Md Irfan</b> <br> Contact Number: <a style="text-decoration: none;" href="tel://9470463078">9470463078</a> </p>
 
-            <p>Name:<b>Md Ibrar</b> <br> Contact Number: 9973621173</p>
+            <p>Name:<b>Md Ibrar</b> <br> Contact Number: <a style="text-decoration: none;" href="tel://9973621173">9973621173</a></p>
         
             <h3>Location</h3>
             <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d817.5385837494532!2d84.3499444!3d25.08025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjXCsDA0JzQ4LjkiTiA4NMKwMjAnNTkuOCJF!5e1!3m2!1sen!2sin!4v1724840594494!5m2!1sen!2sin" width="410"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">Location</iframe>
@@ -205,7 +264,7 @@
 <!-- feedback requeset for User -->
         <article class="page-container">
 
-        <div class="feedback-form">
+         <div class="feedback-form">
             <h2>Feedback</h2>
             <form action="submit_feedback.php" method="POST">
                  <label for="name">Name:</label>
@@ -217,16 +276,14 @@
                  <label for="feedback">Your Feedback:</label>
                  <textarea id="feedback" name="feedback" rows="4" required placeholder="Writh Something Here" ></textarea>
 
-                 <button type="submit">Submit</button>
+                 <button type="submit">Submit</button> 
             </form>
-        </div>
-
-        </article>
-<!-- ////////////////////////////////////////////// -->
+         </div>
+       </article>
     </main>
 
     <footer>
-        <p>&copy; <em>Copyright <b>2022 Madrasa Darul Uloom Faizain-E-Tajushsharia Sikariyan.</b> All Rights Reserved</em> </p>
+        <p>&copy;Copyright 2022 Madrasa Darul Uloom Faizain-E-Tajushsharia Sikariyan. All Rights Reserved</p>
     </footer>
 
 </body>
