@@ -1,3 +1,52 @@
+ /* new event add karna ho to ye update kare  */
+ .marquee-container {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #d0d0d0; /* Light blue background */
+    padding: 20px;
+    overflow: hidden;
+}
+
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    margin-bottom: -35px; /* Space between the two rows */
+}
+
+.marquee-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 25s linear infinite;
+    font-size: 18px;
+    color: #333;
+}
+
+.new-label {
+    background-color: #419b41; /* Bright orange background for the label */
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    z-index: 1;
+    font-weight: bold;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+  /* new event add karna ho to ye update kare  */
+
+
 body{
     padding: 0%;
     margin: 0%;
@@ -75,6 +124,7 @@ h2{
     margin: 0%;
     text-align: center;
     background-color: #d0d0d0;
+    /* background-image: url(/image/background3.jpg); */
 }
 
 /* Midia */
@@ -82,12 +132,136 @@ h2{
     padding: 0%;
     margin: 0%;
     text-align: center;
-    background-color: #d0d0d0;  
+      
+}
+/* with the help of a ai to proced by a website media section */
+
+
+.media-section {
+    width: 100%;
+    background-color: #d0d0d0;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
 }
 
+.media-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.media-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.media-item {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #fff; /* White background for images */
+}
+
+.media-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.media-buttons {
+    margin-top: 20px;
+}
+
+.media-button {
+    background-color: #419b41; /* Bright orange background for buttons */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.media-button:hover {
+    background-color: #419b41; /* Darker shade on hover */
+}
+
+@media (max-width: 768px) {
+    .media-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .media-item {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .media-button {
+        /* margin: 10px 0; */
+        width: 90%;
+        /* display: block; */
+    }
+}
+
+.slider-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    background-color: #e9f5ff; /* Light blue background */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.slider-image {
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+.slider-image.active {
+    display: block;
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.slider-button.prev {
+    left: 10px;
+}
+
+.slider-button.next {
+    right: 10px;
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        max-width: 90%;
+    }
+}
+/* with the help of a ai to proced by a website media section */
 /* for image code arrangment */
 img{
-    width: 150px;
+    width: 250px;
 }
 
 /* donation decoration */
@@ -169,4 +343,5 @@ footer{
     margin: 0;
     text-align: center; 
     background-color:#77a8a8;
+    font-size: 13px;
 }
