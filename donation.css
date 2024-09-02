@@ -21,7 +21,7 @@ h1{
 }
 
 #button{
-   background-color:#77a8a8;
+   background-color:#ADD8E6;
    text-align: center;
    padding: 10px;
    margin: 0px;
@@ -30,12 +30,12 @@ h1{
 }
 
 button{
-    background-color: rgb(88, 168, 168);
+    background-color: #759495;
     border-radius: 20px;
     height: 30px;
     width: 100px;
     border-style: groove;
-    border-color: yellow;
+    border-color: #E0FFFF;
     text-decoration: none; 
 } 
 
@@ -57,6 +57,7 @@ footer{
     background-color:#d0d0d0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    background-image: url(/image/background3.webp);
 }
 
 header {
