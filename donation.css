@@ -57,7 +57,7 @@ footer{
     background-color:#d0d0d0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    background-image: url(/image/background3.webp);
+    background-image: url(image/background3.webp);
 }
 
 header {
