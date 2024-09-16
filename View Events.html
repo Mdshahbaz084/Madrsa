@@ -53,68 +53,67 @@
          font-size: 13px;
         }
 
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-}
-
-.media-section {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.media-section h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.media-container {
-    width: 100%;
-    overflow-x: scroll;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-    scroll-behavior: smooth; /* Smooth scrolling effect */
-}
-
-.media-slider {
-    display: flex;
-    gap: 15px;
-    cursor: grab;
-}
-
-.media-slider img {
-    width: 200px;
+      /* .media-slider img {
+   
     height: 200px;
     object-fit: cover;
     border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth zoom and shadow */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+} */
+
+
+.slider-container {
+    overflow-x: scroll;
+    white-space: nowrap;
+    padding: 20px;
+    background-color: #f4f4f4;
 }
 
-.media-slider img:hover {
-    transform: scale(1.1); /* Zoom effect on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+.image-slider img {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
-.media-container::-webkit-scrollbar {
+.image-slider img:hover {
+    transform: scale(1.05);
+}
+
+/* Modal for zoomed image */
+.modal {
     display: none;
+    position: fixed;
+    z-index: 100;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* To make the slider responsive */
-@media (max-width: 600px) {
-    .media-slider img {
-        width: 250px;
-        height: 250px;
-    }
+.modal-content {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 90%;
 }
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 
         
     </style>
@@ -131,72 +130,90 @@ body {
         <hr>
         <h3 style="color: rgb(45, 84, 84);">Milad Un-nabi Program Pic</h3>
         <hr>
-        <div class="media-section">
-            <div class="media-container">
-                <div class="media-slider">
-                    <img src="image/background3 - Copy.jpg" alt="Image 1">
-                    <img src="image/bord.jpg" alt="Image 2">
-                    <img src="image/inside front.jpg" alt="Image 3">
-                    <img src="image/inside intro.jpg" alt="Image 4">
-                    <img src="image/islamic_wallpaper_16 (1).jpg" alt="Image 5">
-                    <img src="image/background3 - Copy.jpg" alt="Image 1">
-                    <img src="image/bord.jpg" alt="Image 2">
-                    <img src="image/inside front.jpg" alt="Image 3">
-                    <img src="image/inside intro.jpg" alt="Image 4">
-                    <img src="image/islamic_wallpaper_16 (1).jpg" alt="Image 5">
-                </div>
-            </div>
+     </section>
 
-            <div class="media-container">
-                <div class="media-slider">
-                    <img src="image/background3 - Copy.jpg" alt="Image 1">
-                    <img src="image/bord.jpg" alt="Image 2">
-                    <img src="image/inside front.jpg" alt="Image 3">
-                    <img src="image/inside intro.jpg" alt="Image 4">
-                    <img src="image/islamic_wallpaper_16 (1).jpg" alt="Image 5">
-                </div>
+     <!-- section 1 hai code ka  -->
+      <section>
+
+        <!-- pahla row hai page ka -->
+        <div class="slider-container">
+            <div class="image-slider">
+             <video style="height: 200px;" controls autoplay loop  src="image24september2024/video.mp4">video</video>
+            <img src="image24september2024/madrsa ka ladke.jpg" alt="1">
+            <img src="image24september2024/with all pic.jpg" alt="2">
+            <img src="image24september2024/biutifull.jpg" alt="">
+            <img src="image24september2024/hafiz flag.jpg" alt="">
+            <img src="image24september2024/hamid flag.jpg" alt="">
+            <img src="image24september2024/lakhu flag.jpg" alt="">
+            <img src="image24september2024/shahbaz flag.jpg" alt="">
+            <img src="image24september2024/wasim arif hamid.jpg" alt="">
+            <img src="image24september2024/with all .jpg" alt="2">
             </div>
         </div>
-        <script>
-           const sliders = document.querySelectorAll('.media-slider');
+    
+        <div id="image-modal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modal-image">
+        </div>
+        <!-- secound row hai page ka  -->
+        <div class="slider-container">
+            <div class="image-slider">
+             <!-- <video style="height: 200px;" controls autoplay loop  src="image24september2024/video.mp4">video</video>
+            <img src="image24september2024/madrsa ka ladke.jpg" alt="1">
+            <img src="image24september2024/with all pic.jpg" alt="2">
+            <img src="image24september2024/biutifull.jpg" alt="">
+            <img src="image24september2024/hafiz flag.jpg" alt="">
+            <img src="image24september2024/hamid flag.jpg" alt="">
+            <img src="image24september2024/lakhu flag.jpg" alt="">
+            <img src="image24september2024/shahbaz flag.jpg" alt="">
+            <img src="image24september2024/wasim arif hamid.jpg" alt="">
+            <img src="image24september2024/with all .jpg" alt="2"> -->
+            </div>
+        </div>
+    
+        <div id="image-modal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modal-image">
+        </div>
+       <script>
+                // Get modal elements
+const modal = document.getElementById('image-modal');
+const modalImage = document.getElementById('modal-image');
+const closeModal = document.getElementsByClassName('close')[0];
 
-sliders.forEach(slider => {
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+// Get all images from slider
+const images = document.querySelectorAll('.image-slider img');
 
-    slider.addEventListener('mousedown', (e) => {
-        isDown = true;
-        slider.classList.add('active');
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-    });
-
-    slider.addEventListener('mouseleave', () => {
-        isDown = false;
-        slider.classList.remove('active');
-    });
-
-    slider.addEventListener('mouseup', () => {
-        isDown = false;
-        slider.classList.remove('active');
-    });
-
-    slider.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 3; // Scroll speed
-        slider.scrollLeft = scrollLeft - walk;
+// Add click event to each image
+images.forEach(image => {
+    image.addEventListener('click', function() {
+        modal.style.display = "block";
+        modalImage.src = this.src;
     });
 });
 
+// Close the modal when the user clicks on 'X'
+closeModal.onclick = function() {
+    modal.style.display = "none";
+};
 
-        </script>
-
+// Close the modal if the user clicks anywhere outside the image
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}; 
+        </script> 
 
      </section>
-         
+     <!-- section 1 code khatam -->
+
+
+
+     <!-- section 2 yaha se likha jayega dekh lena  thik se  -->
+
+
+
 
      <footer>
         <p>&copy; 2022 Madrasa Darul Uloom Faizain-E-Tajushsharia Sikariyan. All Rights Reserved</p>
