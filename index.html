@@ -6,6 +6,23 @@
     <title>Madrasa Home</title>
     <link rel="icon" href="image/icon image.webp">
     <link rel="stylesheet" href="style.css">
+    
+    <link rel="manifest" href="manifest.json">
+
+
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+    .then(() => console.log('Service Worker Registered'))
+    .catch(error => console.log('Service Worker Registration Failed:', error));
+  }
+</script>
+
+
+
+
+
+
 </head>
 <body>  
     
@@ -29,7 +46,7 @@
     </marquee>
 
     <marquee behavior="scroll" style="font-size: 20px;" >
-         مدرسہ دارالعلوم فیضان تاج الشریعہ سکریان 
+        مدرسہ دارالعلوم فیضان تاج الشریعہ سکریاں
     </marquee>
 
     <main>
@@ -37,7 +54,7 @@
         <div class="marquee-container">
             <div class="marquee">
                 <span class="new-label">NEW</span> 
-                <span class="marquee-text">16 September___Milad un-nabi Program</span>
+                <span class="marquee-text">...........</span>
             </div>
         </div>
 
@@ -109,7 +126,7 @@
        
         </section>
 
-        <section id="Midia" class="Midia">
+        <section id="Media" class="Midia">
 
              <h2>Media</h2>
 
@@ -139,14 +156,12 @@
                 <img src="image/study table.jpg" class="slider-image" alt="Media 3">
                 <img src="image/madrsa outside.jpg" class="slider-image" alt="Media 4">
                 <img src="image/IMG-20240902-WA0048.jpg" class="slider-image" alt="Media 5">
-                
                 <button class="slider-button prev" onclick="prevImage()">&#9664;</button>
                 <button class="slider-button next" onclick="nextImage()">&#9654;</button>
             </div>
             
             <div class="media-buttons">
-<!--                 <a href="#more-media" class="media-button">More Media</a>
-                <a href="#events" class="media-button">View Events</a> -->
+                <!-- <a href="#more-media" class="media-button">More Media</a> -->
                 <a href="View Events.html" class="media-button">View Events</a>
             </div>
             
