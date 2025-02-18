@@ -16,21 +16,6 @@
      .catch(error => console.log('Service Worker Registration Failed:', error));
      }
    </script>
-
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-      <script>
-       window.OneSignalDeferred = window.OneSignalDeferred || [];
-      OneSignalDeferred.push(async function(OneSignal) {
-      await OneSignal.init({
-        appId: "2332fd08-e032-4de8-96d3-94b1c6fe5a16", // Aapki OneSignal App ID
-      safari_web_id: "YOUR_SAFARI_WEB_ID", // (Agar Safari ke liye enable karna ho)
-      notifyButton: {
-        enable: true, // Notification subscribe button enable karega
-      },
-      serviceWorkerPath: "OneSignalSDKWorker.js", // Ensure service worker is set up
-     });
-     });
-     </script>
     
 </head>
 <body>  
