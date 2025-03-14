@@ -4,24 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Madrasa Home</title>
+    <link rel="stylesheet" href="test.css">
     <link rel="icon" href="image/icon image.webp">
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
-      window.OneSignal = window.OneSignal || [];
-      OneSignal.push(function() {
-        OneSignal.init({
-          appId: "2332fd08-e032-4de8-96d3-94b1c6fe5a16", // Yahan apni App ID replace karein
-          notifyButton: {
-            enable: true, // Notify button enable karein
-          },
-        });
-      });
-    </script>
-    
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "2332fd08-e032-4de8-96d3-94b1c6fe5a16",
+    });
+  });
+</script>
 
     <script>
       if ('serviceWorker' in navigator) {
@@ -292,24 +289,164 @@
             <p>Village- Sikariyan, P.S- Karakat(Gorari),Dist- Rohtas(Bihar)821310</p>
 
 <!-- feedback requeset for User -->
-        <article class="page-container">
+       <!-- now add  the qusiton answer tags -->
+              
+       <div class="container">
+        <h1>Q&A System</h1>
+        <button id="loginBtn" class="btn" onclick="googleLogin()">Login with Google</button>
+        <button id="logoutBtn" class="btn" onclick="logout()" style="display: none;">Logout</button>
+        <p id="userName"></p>
 
-         <div class="feedback-form">
-            <h2>Feedback</h2>
-            <form action="submit_feedback.php" method="POST">
-                 <label for="name">Name:</label>
-                 <input type="text" id="name" name="name" required>
+        <form id="questionForm">
+            <input type="text" id="questionInput" class="input" placeholder="Ask a question" required>
+            <button type="submit" class="btn">Submit</button>
+        </form>
 
-                 <label for="email">Email:</label>
-                 <input type="email" id="email" name="email" required>
+        <div id="questionsList"></div>
+       </div>
+      
 
-                 <label for="feedback">Your Feedback:</label>
-                 <textarea id="feedback" name="feedback" rows="4" required placeholder="Writh Something Here" ></textarea>
 
-                 <button type="submit">Submit</button> 
-            </form>
-         </div>
-       </article>
+
+
+       <script type="module">
+        // Import Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        // Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyBfqQK-LMDIRH2S3QDAU-k8kZJDSJ-AHfxI",
+            authDomain: "madrsa-sikariya.firebaseapp.com",
+            projectId: "madrsa-sikariya",
+            storageBucket: "madrsa-sikariya.appspot.com",
+            messagingSenderId: "1066102927865",
+            appId: "1:1066102927865:web:d5e649be4178d363408d28"
+        };
+
+        // Firebase Initialize
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        // 🔹 Google Login Function
+        window.googleLogin = function () {
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    document.getElementById("userName").innerText = `Welcome, ${result.user.displayName}`;
+                    document.getElementById("loginBtn").style.display = "none";
+                    document.getElementById("logoutBtn").style.display = "block";
+                })
+                .catch((error) => console.error(error));
+        };
+
+        // 🔹 Logout Function
+        window.logout = function () {
+            signOut(auth)
+                .then(() => {
+                    document.getElementById("userName").innerText = "";
+                    document.getElementById("loginBtn").style.display = "block";
+                    document.getElementById("logoutBtn").style.display = "none";
+                })
+                .catch((error) => console.error(error));
+        };
+
+        // 🔹 Auth State Change (Check if user is logged in)
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                document.getElementById("userName").innerText = `Welcome, ${user.displayName}`;
+                document.getElementById("loginBtn").style.display = "none";
+                document.getElementById("logoutBtn").style.display = "block";
+            } else {
+                document.getElementById("userName").innerText = "";
+                document.getElementById("loginBtn").style.display = "block";
+                document.getElementById("logoutBtn").style.display = "none";
+            }
+        });
+
+        // 🔹 Question Submit Function
+        document.getElementById("questionForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const questionText = document.getElementById("questionInput").value;
+            const user = auth.currentUser;
+
+            if (user) {
+                await addDoc(collection(db, "questions"), {
+                    text: questionText,
+                    user: user.displayName,
+                    timestamp: new Date()
+                });
+                document.getElementById("questionInput").value = "";
+                loadQuestions();
+            } else {
+                alert("Please login to ask a question.");
+            }
+        });
+
+        // 🔹 Load Questions with Pagination
+        let lastVisible = null;
+        async function loadQuestions() {
+            let q = query(collection(db, "questions"), orderBy("timestamp", "desc"), limit(5));
+            const querySnapshot = await getDocs(q);
+
+            document.getElementById("questionsList").innerHTML = "";
+            querySnapshot.forEach((doc) => {
+                const question = doc.data();
+                document.getElementById("questionsList").innerHTML += `
+                    <div class="question">
+                        <p><strong>${question.user}:</strong> ${question.text}</p>
+                        <input type="text" id="answerInput-${doc.id}" class="answer-input" placeholder="Write an answer">
+                        <button class="answer-btn" onclick="submitAnswer('${doc.id}')">Submit</button>
+                        <div id="answers-${doc.id}" class="answers"></div>
+                    </div>
+                `;
+                loadAnswers(doc.id);
+            });
+
+            lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
+        }
+
+        // 🔹 Answer Submit Function
+        window.submitAnswer = async (questionId) => {
+            const answerText = document.getElementById(`answerInput-${questionId}`).value;
+            const user = auth.currentUser;
+
+            if (user) {
+                await addDoc(collection(db, "answers"), {
+                    questionId: questionId,
+                    text: answerText,
+                    user: user.displayName,
+                    timestamp: new Date()
+                });
+                document.getElementById(`answerInput-${questionId}`).value = "";
+                loadAnswers(questionId);
+            } else {
+                alert("Please login to answer.");
+            }
+        };
+
+        // 🔹 Load Answers for a Question
+        async function loadAnswers(questionId) {
+            let q = query(collection(db, "answers"), orderBy("timestamp", "desc"));
+            const querySnapshot = await getDocs(q);
+            document.getElementById(`answers-${questionId}`).innerHTML = "";
+
+            querySnapshot.forEach((doc) => {
+                const answer = doc.data();
+                if (answer.questionId === questionId) {
+                    document.getElementById(`answers-${questionId}`).innerHTML += `
+                        <p class="answer"><strong>${answer.user}:</strong> ${answer.text}</p>
+                    `;
+                }
+            });
+        }
+
+        // Load Initial Questions
+        loadQuestions();
+    </script>       
+
     </main>
 
     <footer>
